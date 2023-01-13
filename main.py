@@ -150,7 +150,6 @@ def main():
 					turn+=1
 
 	if player_nbr == 1 and difficulty == "b":
-		move = 0
 		while turn < 9:
 			if (turn % 2) != 0:
 				tab_pos = check_pos()
@@ -159,31 +158,8 @@ def main():
 				game = check_win(turn)
 
 			elif (turn % 2) == 0:
-				if (turn % 2 == 0):
-					if move == 0:
-						tab_pos = ia.fp_gm(main_tab)
-						place_elem(tab_pos,turn)
-						move+=1
-
-					elif move == 1:
-						tab_pos = ia.sp_gm(main_tab)
-						place_elem(tab_pos,turn)
-						move+=1
-
-					elif move == 2:
-						tab_pos = ia.tp_gm(main_tab)
-						place_elem(tab_pos,turn)
-						move+=1
-
-					elif move >= 2 and move < 4:
-						tab_pos = ia.lm_gm(main_tab)
-						place_elem(tab_pos,turn)
-						move+=1
-
-					else:
-						tab_pos = ia.draw(main_tab)
-						place_elem(tab_pos,turn)
-						move+=1
+				tab_pos = ia.ia(main_tab,"X")
+				place_elem(tab_pos,turn)
 
 			game = check_win(turn)
 			if game == 1: 
